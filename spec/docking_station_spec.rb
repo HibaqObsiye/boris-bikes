@@ -1,4 +1,5 @@
 require './lib/docking_station'
+require 'bike.rb'
 
 describe DockingStation do
 
@@ -6,8 +7,8 @@ describe DockingStation do
         expect(subject).to respond_to(:release_bike)    
     end
     it 'responds to working?' do
-      bike =  subject.release_bike
-      expect(bike).to be_working
+      bike = Bike.new
+      expect(bike.working?).to eq true
     end
     it { is_expected.to respond_to(:dock).with(1).argument }
     it { is_expected.to respond_to(:bike)}
@@ -18,7 +19,9 @@ describe DockingStation do
         expect(subject.dock(bike)).to eq bike
     end
     it 'raises an error if there is no bike' do
-        expect{subject.release_bike}.to raise_error('no bikes available')
+
+        empty_docking_station = DockingStation.new
+        expect{subject.release_bike}.to raise_error(StandardError)
         
     end
 end
