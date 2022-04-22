@@ -24,4 +24,9 @@ describe DockingStation do
         expect{subject.release_bike}.to raise_error(StandardError)
         
     end
+    it 'raises an error when full' do
+        bike = Bike.new
+        subject.bikes << bike
+        expect{subject.dock(bike)}.to raise_error(StandardError)
+    end
 end

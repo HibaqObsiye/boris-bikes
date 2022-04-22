@@ -1,5 +1,8 @@
 require_relative 'bike'
 class DockingStation 
+    attr_reader :bike
+    attr_accessor :bikes
+    @bikes = []
     def release_bike
         #bike =
         
@@ -8,7 +11,8 @@ class DockingStation
     end
     def dock(bike)
         @bike = bike
+
     end
 
-    attr_reader:bike
+    
 end
