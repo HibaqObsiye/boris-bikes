@@ -26,7 +26,7 @@ describe DockingStation do
     end
     it 'raises an error when full' do
         bike = Bike.new
-        subject.bikes << bike
+        20.times{subject.bikes << bike}
         expect{subject.dock(bike)}.to raise_error(StandardError)
     end
 end
